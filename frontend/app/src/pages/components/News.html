@@ -1,0 +1,65 @@
+<md-content class="md-padding" ng-show="!$ctrl.togglePost" >
+    <md-card ng-repeat="new in $ctrl.news">
+        <md-card-header>
+            <md-card-avatar>
+                <img class="md-user-avatar" ng-src="{{new.user.avatorUrl}}" />
+            </md-card-avatar>
+            <md-card-header-text>
+                <span class="md-title">{{new.user.firstName}} {{new.user.lastName}}</span>
+                <span class="md-subhead">{{new.user.state}}</span>
+            </md-card-header-text>
+        </md-card-header>
+        <img ng-src="{{new.headerimg}}" class="md-card-image" alt="Header image">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{new.title}}</span>
+                <span class="md-subhead">{{new.subtitle}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <!-- <md-card-actions layout="row" layout-align="start center">
+            <md-button>Action 1</md-button>
+            <md-button>Action 2</md-button>
+            <md-card-icon-actions>
+                <md-button class="md-icon-button" aria-label="toggle">
+                    <md-icon md-svg-icon="md-toggle-arrow"></md-icon>
+                </md-button>
+            </md-card-icon-actions>
+        </md-card-actions> -->
+        <md-card-content>
+            <div
+            ng-bind-html="$ctrl.render(new.content)"></div>
+        </md-card-content>
+    </md-card>
+
+
+</md-content>
+<md-button class="md-fab md-fab-bottom-right md-button" aria-label="Post New New" style="position: fixed !important;" ng-click="$ctrl.post()">
+    <md-icon md-svg-icon="post" ng-disabled="!$ctrl.togglePost" ng-if="!$ctrl.togglePost"></md-icon>
+    <i class="fa fa-home" ng-if="$ctrl.togglePost"></i>
+</md-button>
+
+<!-- Post Article -->
+<md-content ng-show="$ctrl.togglePost" layout="column" layout-padding>
+    <div layout="row">
+        <md-input-container flex=50>
+            <label for="">Title</label>
+            <input type="text" ng-model="title">
+        </md-input-container>
+        <md-input-container flex=50>
+            <label for="">Subtitle</label>
+            <input type="text" ng-model="subtitle">
+        </md-input-container>
+    </div>
+    <label for="">Content</label>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <div layout="row">
+        <md-button type="file" ngf-select="submitHeaderImg($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+            Upload
+        </md-button>
+        <span flex></span>
+        <md-button class="" ng-click="$ctrl.reset()">Reset</md-button>
+
+        <md-button class="md-primary" ng-click="$ctrl.submitPost()">Submit</md-button>
+    </div>
+
+</md-content>

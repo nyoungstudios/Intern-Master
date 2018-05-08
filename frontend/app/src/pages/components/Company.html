@@ -1,0 +1,50 @@
+<md-progress-circular ng-if="!loaded"></md-progress-circular>
+<div class="md-padding" flex layout="column" ng-show="loaded">
+    <div class="md-toolbar-tools" layout="">
+        <md-input-container flex>
+            <label for="">Search Company by name, skill</label>
+            <input type="text" ng-model="keyword">
+        </md-input-container>
+
+    </div>
+
+    <div layout="row" class="">
+        <md-chips ng-model="skills" readonly="false" md-removable="$ctrl.removable" placeholder="Enter skills" flex></md-chips>
+
+        <md-checkbox ng-model="bookmarkFilter" aria-label="Bookmark filter">
+            <h2>Bookmark</h2>
+        </md-checkbox>
+        <md-checkbox ng-model="appliedFilter" aria-label="Applied filter">
+            <h2>Applied</h2>
+        </md-checkbox>
+        <md-checkbox ng-model="matchSkill" aria-label="matchSkill filter">
+            <h2>Match My Skills</h2>
+        </md-checkbox>
+    </div>
+
+
+
+    <md-content layout="row" layout-wrap>
+        <md-card flex-xs style="max-width: 300px" ng-repeat="company in $ctrl.companiesResult | filter: keyword" ng-class="$ctrl.appliedStyle(company.$id)">
+            <img class="md-card-image" ng-src="{{$ctrl.getImage(company.company)}}" alt="">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{company.company}}</span>
+                    <!-- <span class="md-subhead">{{company.skills}}</span> -->
+                    <md-chips ng-model="company.skills" readonly="true" md-removable="$ctrl.removable"></md-chips>
+                </md-card-title-text>
+
+            </md-card-title>
+
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="$ctrl.applyCompanay(company.$id, company.url)">Apply</md-button>
+                <md-button>Projects</md-button>
+                <md-button ng-click="$ctrl.bookmark(company.$id)">
+                    <i class="fa" ng-class="bookmarkStyle(company.$id)" aria-label="like"></i>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+
+
+    </md-content>
+</div>

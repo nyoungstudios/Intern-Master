@@ -1,0 +1,10 @@
+.DS_Store
+node_modules/
+backend/Scrawler/venv
+backend/Scrawler/venv1
+backend/Scrawler/venv*
+backend/Scrawler/__pycache__
+.idea/
+npm-debug.log
+gitlogOut.txt
+

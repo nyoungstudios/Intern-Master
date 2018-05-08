@@ -1,0 +1,47 @@
+<md-content class="md-padding" flex layout="row">
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card ng-repeat="userProfile in $ctrl.userProfile">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-haedline">{{userProfile.firstName}}  {{userProfile.lastName}}</span>
+                    <span class="md-subhead">{{userProfile.email}}</span>
+                    <span class="md-subhead">{{userProfile.college.schoolName}}</span>
+                    <span class="md-subhead">{{userProfile.college.degree}}  {{userProfile.college.major}}</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class="md-media-lg card-media">
+                        <img class="md-card-image" ng-src="http://via.placeholder.com/250x250" alt="">
+                    </div>
+                </md-card-title-media>
+            </md-card-title>
+        </md-card>
+
+        <md-card ng-repeat="userProfile in $ctrl.userProfile">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Resume</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class=" card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-content layout="row">
+                <img class="md-card-image" ng-src="http://via.placeholder.com/250x250" alt="">
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+
+                <input type="file" value="upload" id="fileButton" />
+                <md-button ng-click="$ctrl.Upload()">upload</md-button>
+                <md-button href="{{userProfile.URL}}">Open</md-button>
+
+            </md-card-actions>
+            
+            
+            
+            <md-button class="share" md-no-ink ng-click="$ctrl.makeContact(userProfile)" aria-label="Share with {{ userProfile.firstName }}">
+                <md-icon md-svg-icon="share"></md-icon>
+            </md-button>
+            
+        </md-card>  
+    </div>
+</md-content>

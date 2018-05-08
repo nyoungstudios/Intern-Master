@@ -1,0 +1,179 @@
+<md-content class="md-padding" flex layout="row">
+    <div flex-xs flex-gt-xs="50" layout="column">
+
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Company Status</span>
+                    <span class="md-subhead">Applied vs TODO</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class=" card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-content layout="row">
+                <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options">
+                </canvas>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-warn" ng-click="$ctrl.resetAppliedStatus()">Reset</md-button>
+                <md-button>Applied Companies</md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Avator</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <!-- <img src="http://via.placeholder.com/100x100"> -->
+                    <img ng-src="{{user.avatorUrl}}" style="max-height: 100px; width: auto;">
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button type="file" ngf-select="submitAvator($file, $invalidFiles)"
+                accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                    Upload
+                </md-button>
+
+            </md-card-actions>
+
+        </md-card>
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Resume</span>
+                    <!--<span class="md-subhead">B.S.</span>-->
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class=" card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button type="file" ngf-select="submitResume($file, $invalidFiles)"
+                accept=".pdf" ngf-max-size="2MB">
+                    Upload
+                </md-button>
+                <md-button ng-click="$ctrl.previewResume()">Preview</md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">My Skills</span>
+                    <!-- <span class="md-subhead"></span> -->
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class=" card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-content>
+                <md-chips ng-model="user.skills" readonly="false" md-removable="$ctrl.removable" placeholder="Enter skills" flex></md-chips>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="$ctrl.submitSkills()">Submit</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+
+    <div flex-xs flex-gt-xs="50" layout="column">
+
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Profile</span>
+                    <span class="md-subhead">Modify your personal information here :)</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class=" card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
+
+
+            <md-content layout-padding>
+                <div>
+                    <form name="userForm">
+                        <div layout-gt-xs="row">
+
+                            <md-input-container flex-gt-xs>
+                                <label>Website Url</label>
+                                <input ng-model="user.website">
+                            </md-input-container>
+
+                            <md-input-container flex-gt-sm>
+                                <label>Email</label>
+                                <input ng-model="user.email" type="email" disabled>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>Birthday</label>
+                                <md-datepicker ng-model="user.birthday"></md-datepicker>
+                            </md-input-container>
+
+                        </div>
+
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>First name</label>
+                                <input ng-model="user.firstName" required>
+                            </md-input-container>
+
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Last name</label>
+                                <input ng-model="user.lastName" required>
+                            </md-input-container>
+                        </div>
+
+                        <md-input-container class="md-block">
+                            <label>Address</label>
+                            <input ng-model="user.address">
+                        </md-input-container>
+
+                        <md-input-container md-no-float class="md-block">
+                            <input ng-model="user.address2" placeholder="Address 2">
+                        </md-input-container>
+
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>City</label>
+                                <input ng-model="user.city">
+                            </md-input-container>
+
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>State</label>
+                                <md-select ng-model="user.state">
+                                    <md-option ng-repeat="state in states" value="{{state.abbreviation}}">
+                                        {{state.abbreviation}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Postal Code</label>
+                                <input name="postalCode" ng-model="user.postalCode" placeholder="12345" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+
+                                <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                                    <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                                    <div ng-message="pattern" class="my-message">That doesn't look like a valid postal code.
+                                    </div>
+                                    <div ng-message="md-maxlength" class="my-message">
+                                        Don't use the long version silly...we don't need to be that specific...
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+
+                        <md-input-container class="md-block">
+                            <label>Biography</label>
+                            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                        </md-input-container>
+
+                    </form>
+                </div>
+            </md-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="$ctrl.submit()">Submit</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</md-content>

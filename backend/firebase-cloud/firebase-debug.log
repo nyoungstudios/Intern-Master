@@ -1,0 +1,31 @@
+[debug] [2018-03-07T19:04:37.020Z] ----------------------------------------------------------------------
+[debug] [2018-03-07T19:04:37.022Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-03-07T19:04:37.023Z] CLI Version:   3.17.4
+[debug] [2018-03-07T19:04:37.023Z] Platform:      darwin
+[debug] [2018-03-07T19:04:37.023Z] Node Version:  v6.9.1
+[debug] [2018-03-07T19:04:37.024Z] Time:          Wed Mar 07 2018 14:04:37 GMT-0500 (EST)
+[debug] [2018-03-07T19:04:37.024Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-03-07T19:04:37.039Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-03-07T19:04:37.039Z] > authorizing via signed-in user
+[debug] [2018-03-07T19:04:37.042Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/intern-master  
+  
+ Wed Mar 07 2018 14:04:37 GMT-0500 (EST)
+[debug] [2018-03-07T19:04:39.088Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-07T19:04:39.089Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/intern-master/tokens  
+  
+ Wed Mar 07 2018 14:04:39 GMT-0500 (EST)
+[debug] [2018-03-07T19:05:39.158Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-07T19:05:39.263Z] Error: Firebase.authWithCustomToken failed: First argument must be a valid credential (a string).
+    at Error (native)
+    at ng (/usr/local/lib/node_modules/firebase-tools/node_modules/firebase/lib/firebase-node.js:129:313)
+    at X.gg (/usr/local/lib/node_modules/firebase-tools/node_modules/firebase/lib/firebase-node.js:266:131)
+    at /usr/local/lib/node_modules/firebase-tools/lib/acquireRefs.js:19:19
+    at initializePromise (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:567:5)
+    at new Promise (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:1039:33)
+    at /usr/local/lib/node_modules/firebase-tools/lib/acquireRefs.js:12:12
+    at tryCatch (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:525:12)
+    at invokeCallback (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:538:13)
+    at publish (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:508:7)
+[error] 
+[error] Error: An unexpected error has occurred.

@@ -1,0 +1,83 @@
+{
+  "name": "intern-master",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Intern Master. Considered your internship application done :)",
+  "repository": "https://github.com/doudoujay/Intern-Master",
+  "license": "MIT",
+  "jspm": {
+    "registry": "npm",
+    "directories": {
+      "baseURL": "app",
+      "lib": "app/src"
+    },
+    "dependencies": {
+      "angular": "github:angular/bower-angular@1.5.8",
+      "angular-animate": "github:angular/bower-angular-animate@1.5.8",
+      "angular-aria": "github:angular/bower-angular-aria@1.5.8",
+      "angular-material": "github:angular/bower-material@master",
+      "angular-messages": "github:angular/bower-angular-messages@1.5.8",
+      "components/jquery": "github:components/jquery@^3.2.1",
+      "css": "github:systemjs/plugin-css@^0.1.20",
+      "flat-color-icons": "^1.1.0",
+      "fs": "github:jspm/nodelibs-fs@^0.1.2",
+      "immstruct": "^2.0.0",
+      "jquery": "github:components/jquery@^3.2.1",
+      "json": "github:systemjs/plugin-json@^0.1.0",
+      "lodash-node": "^3.10.2",
+      "myname": "underscore@^1.8.3",
+      "showdown": "github:showdownjs/showdown@^1.8.6",
+      "text": "github:systemjs/plugin-text@^0.0.4"
+    },
+    "devDependencies": {
+      "@uirouter/angularjs": "^1.0.15",
+      "angular-filter": "^0.5.17",
+      "angular-loading-bar": "github:chieffancypants/angular-loading-bar@^0.9.0",
+      "angular-markdown-directive": "^0.3.1",
+      "angular-mocks": "^1.5.0",
+      "angular-sanitize": "github:angular/bower-angular-sanitize@^1.6.10",
+      "angular-ui/ui-router": "github:angular-ui/ui-router@^1.0.15",
+      "chai": "^3.4.0",
+      "chart": "github:chartjs/Chart.js@^2.7.1",
+      "connect-history-api-fallback": "^1.1.0",
+      "css-loader": "^0.19.0",
+      "del": "^2.2.0",
+      "firebase": "github:firebase/firebase-bower@^4.9.0",
+      "fs-walk": "0.0.1",
+      "jtblin/angular-chart.js": "github:jtblin/angular-chart.js@^1.1.1",
+      "karma": "^0.13.22",
+      "karma-chai": "^0.1.0",
+      "karma-chrome-launcher": "^0.2.0",
+      "karma-mocha": "^0.2.0",
+      "karma-mocha-reporter": "^1.0.2",
+      "karma-sourcemap-loader": "^0.3.4",
+      "karma-webpack": "^1.5.1",
+      "kmturley/angularfire": "github:kmturley/angularfire@^2.3.0",
+      "ng-annotate-loader": "0.0.10",
+      "ng-file-upload": "^12.2.13",
+      "node-libs-browser": "^0.5.0",
+      "run-sequence": "^1.1.0",
+      "simplemde": "^1.11.2",
+      "style-loader": "^0.12.2",
+      "supports-color": "^3.1.2",
+      "traceur": "github:jmcriffey/bower-traceur@0.0.93",
+      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.93"
+    }
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "http-server": "^0.11.1",
+    "jspm": "^0.16.53"
+  },
+  "scripts": {
+    "preinstall": "npm install -g http-server",
+    "postinstall": "jspm install",
+    "serve": "cd app && browser-sync start --server --files='**/*.*' ",
+    "dev": "cd app && lite-server",
+    "start": "node server.js",
+    "test": "cd e2e && protractor conf.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

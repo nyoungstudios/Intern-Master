@@ -1,0 +1,14 @@
+<md-list>
+    <md-list-item ng-repeat="page in $ctrl.pages">
+        <md-button ng-click="$ctrl.showDetails({page:page})" ng-class="{'selected' : page === $ctrl.selected }" ui-sref="{{page.url}}">
+            <md-icon md-svg-icon="{{page.avatar}}" class="avatar"></md-icon>
+            {{page.name}}
+        </md-button>
+    </md-list-item>
+    <md-list-item>
+        <md-button ng-click="$ctrl.signout()">
+            <md-icon md-svg-icon="logout" class="avatar"></md-icon>
+            logout
+        </md-button>
+    </md-list-item>
+</md-list>
